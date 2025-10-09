@@ -17,12 +17,12 @@ const styles = StyleSheet.create({
     flex: 1, 
     justifyContent: 'center', 
     alignItems: 'center',
-    backgroundColor: '#fff' // mantém padrão entre telas
+    backgroundColor: '#fff' 
   },
   titulo: { 
     fontSize: 24, 
     fontWeight: 'bold', 
-    color: '#007AFF', // mesma cor usada no DetailsScreen
-    marginBottom: 20 // espaço entre título e botão
+    color: '#007AFF', 
+    marginBottom: 20 
   }
 });

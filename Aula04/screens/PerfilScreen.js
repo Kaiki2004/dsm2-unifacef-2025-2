@@ -15,7 +15,7 @@ export default function PerfilScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center', // corrigido
+    justifyContent: 'center', 
     alignItems: 'center',
     backgroundColor: '#fff'
   },

@@ -15,12 +15,12 @@ const styles = StyleSheet.create({
     flex: 1, 
     justifyContent: 'center', 
     alignItems: 'center',
-    backgroundColor: '#fff' // deixa fundo branco (boa prática)
+    backgroundColor: '#fff' 
   },
   titulo: { 
     fontSize: 24, 
     color: '#007AFF', 
-    marginBottom: 20, // dá um respiro entre título e botão
+    marginBottom: 20, 
     fontWeight: 'bold'
   }
 });
