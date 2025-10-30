@@ -11,23 +11,24 @@ import {
   StatusBar,
 } from "react-native";
 
-
 const CATEGORIES = [
-  "Eletrônicos",
-  "Roupas",
-  "Livros",
-  "Casa & Cozinha",
-  "Esporte",
-  "Beleza",
+  "Tecnologia",
+  "Moda Masculina",
+  "Moda Feminina",
+  "Games",
+  "Livros e Cultura",
+  "Acessórios",
+  "Beleza & Cuidados",
+  "Pets & Cuidados Animais"
 ];
 
 function makeProducts(qty = 80) {
   return Array.from({ length: qty }).map((_, i) => {
     const category = CATEGORIES[i % CATEGORIES.length];
-    const price = (Math.random() * 500 + 10).toFixed(2);
+    const price = (Math.random() * 800 + 20).toFixed(2);
     return {
       id: String(i + 1),
-      name: `${category} Item ${i + 1}`,
+      name: `${category} - Produto ${i + 1}`,
       price: Number(price),
       category,
     };
@@ -64,8 +65,8 @@ const ProductRow = memo(({ item, sizeScale }) => {
           padding: 12 * sizeScale,
           borderRadius: 12 * sizeScale,
           ...(Platform.OS === "android"
-            ? { elevation: 1 }
-            : { shadowOpacity: 0.08, shadowRadius: 3, shadowOffset: { width: 0, height: 1 } }),
+            ? { elevation: 2 }
+            : { shadowOpacity: 0.1, shadowRadius: 4, shadowOffset: { width: 0, height: 2 } }),
         },
       ]}
       accessibilityRole="button"
@@ -79,10 +80,8 @@ const ProductRow = memo(({ item, sizeScale }) => {
   );
 });
 
-
 export default function App() {
   const { width, height } = useWindowDimensions();
-
   const sizeScale = useMemo(() => {
     if (width >= 1000) return 1.25;
     if (width >= 700) return 1.12;
@@ -129,23 +128,23 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar
-        barStyle={Platform.OS === "android" ? "light-content" : "dark-content"}
-        backgroundColor="#0ea5e9"
+        barStyle="light-content"
+        backgroundColor="#7c3aed"
       />
 
       <View style={[styles.headerBar, { paddingVertical: 12 * sizeScale }]}>
         <Text style={[styles.headerTitle, { fontSize: 18 * sizeScale }]}>
-          Catálogo Interativo de Produtos
+          Catálogo Digital
         </Text>
         <Text style={[styles.headerSubtitle, { fontSize: 12 * sizeScale }]}>
-          Filtre por nome e explore por categoria
+          Explore nossos produtos por categoria
         </Text>
       </View>
 
       <View style={[styles.searchWrapper, { height: searchHeight }]}>
         <TextInput
-          placeholder="Buscar por nome..."
-          placeholderTextColor="#64748b"
+          placeholder="Buscar produtos..."
+          placeholderTextColor="#9ca3af"
           value={query}
           onChangeText={setQuery}
           clearButtonMode="while-editing"
@@ -191,14 +190,13 @@ export default function App() {
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f1f5f9",
+    backgroundColor: "#0f172a", // fundo escuro
   },
   headerBar: {
-    backgroundColor: "#0ea5e9",
+    backgroundColor: "#7c3aed", // roxo neon
     alignItems: "center",
   },
   headerTitle: {
@@ -206,22 +204,22 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
   headerSubtitle: {
-    color: "rgba(255,255,255,0.9)",
+    color: "#d1d5db",
     marginTop: 2,
   },
   searchWrapper: {
-    backgroundColor: "#e2e8f0",
+    backgroundColor: "#1e293b",
     justifyContent: "center",
     paddingHorizontal: 12,
   },
   searchInput: {
-    backgroundColor: "#fff",
+    backgroundColor: "#334155",
     borderWidth: 1,
-    borderColor: "#cbd5e1",
-    color: "#0f172a",
+    borderColor: "#7c3aed",
+    color: "#f8fafc",
   },
   sectionHeader: {
-    backgroundColor: "#e2e8f0",
+    backgroundColor: "#1e1b4b",
     paddingHorizontal: 12,
     borderRadius: 8,
     marginTop: 12,
@@ -229,20 +227,20 @@ const styles = StyleSheet.create({
   },
   sectionHeaderText: {
     fontWeight: "700",
-    color: "#0f172a",
+    color: "#c4b5fd",
   },
   card: {
-    backgroundColor: "#ffffff",
+    backgroundColor: "#1e293b",
     borderWidth: 1,
-    borderColor: "#e2e8f0",
+    borderColor: "#475569",
   },
   cardTitle: {
     fontWeight: "600",
-    color: "#0f172a",
+    color: "#f1f5f9",
     marginBottom: 4,
   },
   cardPrice: {
-    color: "#334155",
+    color: "#a78bfa",
   },
   separator: {
     height: 10,
@@ -252,11 +250,11 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
   },
   emptyText: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontWeight: "600",
   },
   emptySub: {
-    color: "#334155",
+    color: "#a1a1aa",
     marginTop: 4,
   },
 });
